@@ -17,12 +17,155 @@ keypoints:
 - "It is important to understand the balance between scope 2 and scope 3 emissions before deciding on how to approach reducing your emissions."
 ---
 
+The first step in understanding how to reduce the emissions from your research or other work is quantifying the emissions from different sources so you can understand where action to reduce emissions can have the largest impact. Emissions from your use of HPC may be a large component and there has been a lot of work recently from the HPC community to enable users to estimate their emissions.
+
+So that we can compare emissions from HPC system use to other sources, we need to use a common, agreed framework to quantify emissions. The framework that is most widely used is the Greenhouse Gas (GHG) Protocol.
+
 # Greenhouse Gas (GHG) Protocol
+
+The [GHG Protocol](https://ghgprotocol.org/sites/default/files/standards/ghg-protocol-revised.pdf) is the most widely used and internationally recognised greenhouse gas accounting standard. Many organisations use the protocol and it provides the basis of emissions reporting for most countries (including the UK). Using the GHG protocol allows us to compare our emissions from use of HPC systems to other sources of emissions in a quantitative way.
+
+The GHG protocol divides emissions into three scopes:
+
+- Scope 1: Direct emissions from operations owned or controlled by the reporting organisation, such as on-site fuel combustion or fleet vehicles.
+- Scope 2: Indirect emissions related to emission generation of purchased energy.
+- Scope 3: Other indirect emissions from activities. Scope 3 emissions are typically split into two further categories: Upstream Emissions and Downstream Emissions:
+  + Upstream Scope 3 Emissions: Includes all emissions from an organisation’s supply chain, e.g. emissions from manufacturing and shipping a product
+  + Downstream Scope 3 Emissions: Emissions resulting from the use of a product, e.g. the electricity customers may consume when using your product.
+
+Whether the emissions from electricity use on HPC systems are Downstream Scope 3 or Scope 2 really depends on who is computing the emissions and for what purpose. From the viewpoint of the hardware vendor who sells and manufactures the HPC system, the electricity use falls into Downstream Scope 3 emissions but for operators and users of the HPC system they would classified as Scope 2 emissions. As we are approaching this subject as a provider of HPC services we will always classify the emissions from our electricity use on HPC systems as Scope 2.
 
 # Estimating emissions from an HPC system
 
-## How do HPC systems reduce HPC emissions?
+We present the case study of ARCHER2 below but the mechanism for estimating emissions for any HPC system follows a similar process:
+
+1. Estimate the total lifetime scope 3 (embodied emissions) of the HPC hardware by sourcing values from reports and vendor data sheets.
+2. Divide the total scope 3 emissions by the total number of resource units available over the lifetime of the service (e.g. coreh, nodeh, GPUh) to obtain an emissions rate per resource unit (e.g. kgCO2e/coreh).
+3. Audit the power draw by component across the whole HPC to understand which energy use can be measured on a per job basis and which energy needs to be added as overheads and what size those overheads may be.
+4. Decide if you will use instantaneous carbon intensity of electricity generation to compute emissions from energy or if you will use an average value of some sort. The instantaneous values (e.g. from carbonintensity.org.uk) will allow for more accurate emissions estimates. Using an average value will make estimation easier and may be useful for getting a useful first pass to understand how your HPC emissions fit in the wider emissions generated from your work.
+
+The HPC system you are using may already have values and tools available for estimating emissions. For example, on ARCHER2 you can estimate your emissions using tools installed on the system, see [ARCHER2 documentation](https://docs.archer2.ac.uk/user-guide/energy/#emissions).
+
+## Scope 3 emissions
+
+Scope 3 emissions from the ARCHER2 hardware have been estimated from a subset of the components that are expected to 
+make up the majority of the emissions. Note that there is a large amount of uncertainty for scope 3 emissions due
+to lack of high quality Scope 3 emissions data from vendors. In particular, the number used for the compute node
+emissions is at the high end of estimated values and the actual value could be as much as 15% lower at around 
+900 kgCO<sub>2</sub>e/node.
+
+| Component | Count | Estimated kgCO<sub>2</sub>e per unit | Estimated kgCO<sub>2</sub>e | % Total Scope 3 | References |
+|---|--:|--:|--:|--:|---|
+| Compute nodes | 5,860 nodes | 1,100 | 6,400,000 | 84% | (1) |
+| Interconnect switches | 768 switches | 280 | 150,000 | 2% | (2) |
+| Lustre HDD | 19,759,200 GB | 0.02 | 400,000 | 6% | (3) |
+| Lustre SSD | 1,900,800 GB | 0.16 | 300,000 | 4% | (3) |
+| NFS HDD | 3,240,000 GB | 0.02 | 70,000 | 1% | (3) |
+| Total | | | 7,320,000 | 100% | |
+
+We then estimate the per-CU (nodeh) Scope 3 emissions by assuming a service lifetime of 6 years and
+100% availability:
+
+```
+7,320,000 kgCO2e / (5,860 nodes * 6 years * 365 days * 24 hours) = 0.023 kgCO2e/CU
+```
+
+We use a value of **0.023 kgCO<sub>2</sub>e/CU** for ARCHER2.
+
+> ## Extending the lifetime of the service improves the carbon efficiency
+> 
+> As one of the main parts of computing the scope 3 emissions rate is the HPC service lifetime
+> one of the simplest ways that a HPC service operator can improve the scope 3 emissions
+> efficiency is by extending the lifetime of the service.
+{: .callout}
+
+References:
+
+1. [IRISCAST Final Report](https://doi.org/10.5281/zenodo.7692451)
+2. Estimate taken from IBM z16™ multi frame 24-port Ethernet Switch Product Carbon Footprint
+3. [Tannu and Nair, 2023](https://arxiv.org/abs/2207.10793)
+
+## Scope 2 emissions
+
+Scope 2 emissions from ARCHER2 are zero as the service is supplied by 100% certified renewable energy.
+For information purposes we can calculate what the scope 2 emissions would have been if the energy
+was not 100% renewable energy using the methodology described below.
+
+We are aware that there is ongoing discussion in the sustainability community about the impact and
+effectiveness of certified renewable energy contracts that are supplied through UK National Grid
+connections. We are monitoring these discussions and taking advice from sustainability professionals
+on how we report and estimate ARCHER2 emissions.
+
+UK National Grid based scope 2 emissions are calculated using the compute node energy use for particular
+jobs along with the carbon intensity of the South Scotland region of the UK National Grid at the start
+time of the job. The carbon intensity is retrieved from the [carbonintensity.org.uk](carbonintensity.org.uk)
+web API.
+
+If the energy use of a job is not available (which happens occasionally due to, e.g. counter failures) then
+the mean per node power draw from 1 Jan 2024 - 30 Jun 2024 on ARCHER2 is used to compute the energy
+consumption. This corresponds to a value of 0.41 kW per node.
+
+Estimates of power draw of individual components of ARCHER2 suggest that the compute node power draw makes up
+around 85% of the system power draw so to estimate energy use by additional components we add
+15% of the measured compute node energy.
+
+| Component | Count | Loaded power draw per unit (kW)| Loaded power draw (kW) | % Total | Notes |
+|---|--:|--:|--:|--:|---|
+| Compute nodes | 5,860 nodes | 0.41 | 2,400 | 85% | Measured by on system counters |
+| Interconnect switches | 768 switches | 0.24 | 240 | 9% | Measured by on system counters |
+| Lustre storage | 5 file systems | 8 | 40 | 1% | Estimate from vendor |
+| NFS storage | 4 file systems | 8 | 32 | 1% | Estimate from vendor |
+| Coolant distribution units | 6 CDU | 16 | 96 | 3% | Estimate from vendor |
+| Total | | | 2,808 | 99% | |
+
+Current scope 2 grid based emission calculations estimates do not include overheads from the electrical
+and cooling plant, these will vary with outside weather conditions at the data centre but are typically
+less than 10%. As a conservative estimate, we add an additional 10% energy use to the total to 
+account for plant overheads. 
+
+The final energy calculation for a job is therefore:
+
+1. Take measured compute node energy use from Slurm (or, if not available for that job use a per-node
+   power draw of 0.41 kW to estimate energy use).
+2. Add an additional 15% of this compute node energy use to estimate energy use by other components.
+3. Add an additional 10% of the new total energy use to estimate energy use overheads from plant.
+
+This energy consumption (in kWh) can then be used to compute the emissions from the job by multiplying 
+the energy use by the carbon intensity (in kgCO2e/kWh) by the job energy use. In the tools used to 
+estimate emissions on ARCHER2, we use the carbon intensity value for S. Scotland from the UK National Grid
+at the start time of the job.
+
+> ## How do HPC systems reduce HPC emissions?
+> 
+> As well as a producer of GHG emissions, HPC systems like ARCHER2 also contribute to reducing emissions. The main source of reduced emissions from services such as ARCHER2 is in the research that leads to new technology, policies and approaches to reducing emissions. Some examples include:
+>
+> - HPC services run the climate models that are used to provide evidence for setting emissions reductions policies and targets across the world.
+> Research and modelling on HPC services leads to development of improved zero emission energy generation by, for example, modelling new wind turbine and wind farm designs.
+> - Modelling to support the development of new energy storage technologies such as improved batteries. The emissions reductions from such activities are extremely difficult to quantify for a number of reasons so, at the moment, these are not factored in to the emissions estimates for ARCHER2.
+> 
+> As well as the research activities on the service leading to reductions in emissions, there are other activities that HPC services can potentially take. For example:
+>
+> - Using the waste heat generated by large scale HPC services as a heat source for homes, businesses or farming. For the ACF data centre where ARCHER2 is hosted we are looking for options on how to do this.
+> - Incorporating environmental and biodiversity improvements into the service. For the ACF data centre (which is in a rural location) we have been working to improve the site biodiversity and improve habitats. Responsible carbon offset schemes could also potentially be used to reduce emissions if they were undertaken as part of the service.
+{: .callout}
+
+## Estimating emissions from your use of HPC systems
+
+We will describe a simple scheme for getting a first, rough estimate for the emissions from your use of an HPC system. If this calculation shows that your HPC system use is likely to be a significant source of emissions within your wider activities then you can use the more detailed scheme described above that uses instantaneous carbon intensity values.
+
+For the calculation you need:
+
+- R - The amount of resource consumed 
+- E - An estimate of the energy use per resource consumed (e.g. kWh/nodeh)
+- CI - An estimate of the average carbon intensity for the period of usage you are looking at
+- S3E An estimated value of scope 3 (embodied emissions) per resource consumed
+
+The emissions for your use of the HPC system is then given by:
+
+```
+R x (ExCI + S3E)
+```
 
 # Reducing my emissions from use of HPC systems
 
-
+Once you have estimated 
