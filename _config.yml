@@ -81,6 +81,7 @@ sched:
 episode_order:
   - 12-cluster
   - 13-scheduler
+  - 15-modules
 
 #------------------------------------------------------------
 # Values for this lesson
