@@ -82,6 +82,7 @@ episode_order:
   - 12-cluster
   - 13-scheduler
   - 15-modules
+  - 20-emissions
 
 #------------------------------------------------------------
 # Values for this lesson
