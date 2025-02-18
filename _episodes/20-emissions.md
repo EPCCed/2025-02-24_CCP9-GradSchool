@@ -19,7 +19,7 @@ keypoints:
 
 # Greenhouse Gas (GHG) Protocol
 
-# Estimating emissions from an HPC system
+# Estimating emissions from an HPC system
 
 ## How do HPC systems reduce HPC emissions?
 
