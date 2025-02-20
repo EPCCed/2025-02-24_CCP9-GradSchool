@@ -160,12 +160,56 @@ For the calculation you need:
 - CI - An estimate of the average carbon intensity for the period of usage you are looking at
 - S3E An estimated value of scope 3 (embodied emissions) per resource consumed
 
-The emissions for your use of the HPC system is then given by:
+The emissions for your use of the HPC system is then given by (assuming resources in nodeh)
 
-```
-R x (ExCI + S3E)
-```
+- Scope 2 = (Resource consumed in nodeh) &times; (Energy use rate in kWh/nodeh) &times; (Carbon intensity in gCO2e/kWh)
+- Scope 3 = (Resource consumed in nodeh) &times; (Scope 3 emissions rate in kgCO2e/nodeh)
+- Total emissions = Scope 2 + Scope 3
 
 # Reducing my emissions from use of HPC systems
 
-Once you have estimated 
+Once you have estimated your emissions then how you start to reduce your emissions depends on whether scope 2 emissions dominate, scope 3 emissions dominate or they are roughly equal. 
+
+All of the following discussion assumes you have a fixed amount of work you want to do. Obviously, a strategy that works in all cases is to reduce the amount of HPC resources you use. This may not be practical, but it does require all of us to remember that we have a responsibility consider carefully the carbon cost of any calculations we undertake and be confident that a calculation will do useful and meaningful work before we start it.
+
+We outline a number of strategies for the different cases below. Which you undertake first will be driven by practical considerations such as scale of potential reduction and ease of implementation.
+
+## Scope 2 emissions dominate
+
+There are a number of different strategies to reduce your emissions in this case, these include:
+
+- Improve the energy efficiency of your application
+  + Could be by modifying the software to use more energy efficient algorithms
+  + Could be by imposing a power cap (or CPU/GPU frequency cap) on the processors you are using
+- Run your calculations only when the carbon intensity is lower - *tempoaral shifting*
+  + You can obtain carbon intensity forecasts for the location of your HPC service from carbonintensity.org.uk
+- Move your calculations to an HPC facility in a location with lower carbon intensity - *spatial shifting*
+
+| UK Region | Mean 2024 CI (gCOe/kWh) | National DRI hosted in area |
+|---|--:|---|
+| NE England | 22 | DiRAC MI (COSMA) |
+| S Scotland| 26 | ARCHER2, DiRAC ES (Tursa) |
+| N Scotland | 30 | |
+| NW England | 48 | |
+| N Wales | 77 | |
+| E England | 108 | DiRAC DI (DIaC/CSD3), AIRR (Dawn) |
+| London | 125 | |
+| W Midlands | 125 | |
+| SE England | 135 | |
+| Yorkshire | 135 | |
+| S England | 186 | |
+| E Midlands | 203 | DiRAC DI (DIaL) |
+| SW England | 242 | AIRR (IsambardAI), Tier-2 HPC (Isambard3) |
+| S Wales | 255 | |
+
+## Scope 3 emissions dominate
+
+Your aim is to increase the amount of output you get from each resource unit (e.g. nodeh) used irrespective of energy use.
+
+- Improve the performance of your application
+- Remove any power caps (or CPU/GPU frequency caps)
+- Move your calculations to an HPC facility that has a lower emissions rate per amount of output for your use case - *spatial shifting*
+
+## Scope 2 and scope 3 roughly equal
+
+In this case you can use any and all of the strategies described above to reduce your emissions footprint.
