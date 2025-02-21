@@ -235,8 +235,8 @@ wall time, and attempt to run a job for two minutes.
 {{ site.remote.bash_shebang }}
 {{ site.sched.comment }} {{ site.sched.flag.name }}long_job
 {{ site.sched.comment }} {{ site.sched.flag.time }}00:01 # timeout in HH:MM
-{{ site.sched.comment }} {{ site.sched.partition }} 
-{{ site.sched.comment }} {{ site.sched.qos }} 
+{{ site.sched.comment }} {{ site.sched.flag.partition }} 
+{{ site.sched.comment }} {{ site.sched.flag.qos }} 
 
 echo "This script is running on ... "
 sleep 240 # time in seconds
