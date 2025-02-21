@@ -21,7 +21,7 @@ The first step in understanding how to reduce the emissions from your research o
 
 So that we can compare emissions from HPC system use to other sources, we need to use a common, agreed framework to quantify emissions. The framework that is most widely used is the Greenhouse Gas (GHG) Protocol.
 
-# Greenhouse Gas (GHG) Protocol
+## Greenhouse Gas (GHG) Protocol
 
 The [GHG Protocol](https://ghgprotocol.org/sites/default/files/standards/ghg-protocol-revised.pdf) is the most widely used and internationally recognised greenhouse gas accounting standard. Many organisations use the protocol and it provides the basis of emissions reporting for most countries (including the UK). Using the GHG protocol allows us to compare our emissions from use of HPC systems to other sources of emissions in a quantitative way.
 
@@ -30,12 +30,12 @@ The GHG protocol divides emissions into three scopes:
 - Scope 1: Direct emissions from operations owned or controlled by the reporting organisation, such as on-site fuel combustion or fleet vehicles.
 - Scope 2: Indirect emissions related to emission generation of purchased energy.
 - Scope 3: Other indirect emissions from activities. Scope 3 emissions are typically split into two further categories: Upstream Emissions and Downstream Emissions:
-  + Upstream Scope 3 Emissions: Includes all emissions from an organisation’s supply chain, e.g. emissions from manufacturing and shipping a product
-  + Downstream Scope 3 Emissions: Emissions resulting from the use of a product, e.g. the electricity customers may consume when using your product.
+  - Upstream Scope 3 Emissions: Includes all emissions from an organisation’s supply chain, e.g. emissions from manufacturing and shipping a product
+  - Downstream Scope 3 Emissions: Emissions resulting from the use of a product, e.g. the electricity customers may consume when using your product.
 
 Whether the emissions from electricity use on HPC systems are Downstream Scope 3 or Scope 2 really depends on who is computing the emissions and for what purpose. From the viewpoint of the hardware vendor who sells and manufactures the HPC system, the electricity use falls into Downstream Scope 3 emissions but for operators and users of the HPC system they would classified as Scope 2 emissions. As we are approaching this subject as a provider of HPC services we will always classify the emissions from our electricity use on HPC systems as Scope 2.
 
-# Estimating emissions from an HPC system
+## Estimating emissions from an HPC system
 
 We present the case study of ARCHER2 below but the mechanism for estimating emissions for any HPC system follows a similar process:
 
@@ -46,7 +46,7 @@ We present the case study of ARCHER2 below but the mechanism for estimating emis
 
 The HPC system you are using may already have values and tools available for estimating emissions. For example, on ARCHER2 you can estimate your emissions using tools installed on the system, see [ARCHER2 documentation](https://docs.archer2.ac.uk/user-guide/energy/#emissions).
 
-## Scope 3 emissions
+### Scope 3 emissions
 
 Scope 3 emissions from the ARCHER2 hardware have been estimated from a subset of the components that are expected to 
 make up the majority of the emissions. Note that there is a large amount of uncertainty for scope 3 emissions due
@@ -86,7 +86,7 @@ References:
 2. Estimate taken from IBM z16™ multi frame 24-port Ethernet Switch Product Carbon Footprint
 3. [Tannu and Nair, 2023](https://arxiv.org/abs/2207.10793)
 
-## Scope 2 emissions
+### Scope 2 emissions
 
 Scope 2 emissions from ARCHER2 are zero as the service is supplied by 100% certified renewable energy.
 For information purposes we can calculate what the scope 2 emissions would have been if the energy
@@ -156,10 +156,10 @@ We will describe a simple scheme for getting a first, rough estimate for the emi
 
 For the calculation you need:
 
-- R - The amount of resource consumed 
-- E - An estimate of the energy use per resource consumed (e.g. kWh/nodeh)
-- CI - An estimate of the average carbon intensity for the period of usage you are looking at
-- S3E An estimated value of scope 3 (embodied emissions) per resource consumed
+- The amount of resource consumed 
+- An estimate of the energy use per resource consumed (e.g. kWh/nodeh)
+- An estimate of the average carbon intensity for the period of usage you are looking at
+- An estimated value of scope 3 (embodied emissions) per resource consumed
 
 The emissions for your use of the HPC system is then given by (assuming resources in nodeh)
 
@@ -167,7 +167,7 @@ The emissions for your use of the HPC system is then given by (assuming resource
 - Scope 3 = (Resource consumed in nodeh) &times; (Scope 3 emissions rate in kgCO2e/nodeh)
 - Total emissions = Scope 2 + Scope 3
 
-# Reducing my emissions from use of HPC systems
+## Reducing my emissions from use of HPC systems
 
 Once you have estimated your emissions then how you start to reduce your emissions depends on whether scope 2 emissions dominate, scope 3 emissions dominate or they are roughly equal. 
 
@@ -175,15 +175,15 @@ All of the following discussion assumes you have a fixed amount of work you want
 
 We outline a number of strategies for the different cases below. Which you undertake first will be driven by practical considerations such as scale of potential reduction and ease of implementation.
 
-## Scope 2 emissions dominate
+### Scope 2 emissions dominate
 
 There are a number of different strategies to reduce your emissions in this case, these include:
 
 - Improve the energy efficiency of your application
-  + Could be by modifying the software to use more energy efficient algorithms
-  + Could be by imposing a power cap (or CPU/GPU frequency cap) on the processors you are using
+  - Could be by modifying the software to use more energy efficient algorithms
+  - Could be by imposing a power cap (or CPU/GPU frequency cap) on the processors you are using
 - Run your calculations only when the carbon intensity is lower - *tempoaral shifting*
-  + You can obtain carbon intensity forecasts for the location of your HPC service from carbonintensity.org.uk
+  - You can obtain carbon intensity forecasts for the location of your HPC service from carbonintensity.org.uk
 - Move your calculations to an HPC facility in a location with lower carbon intensity - *spatial shifting*
 
 | UK Region | Mean 2024 CI (gCOe/kWh) | National DRI hosted in area |
@@ -203,7 +203,7 @@ There are a number of different strategies to reduce your emissions in this case
 | SW England | 242 | AIRR (IsambardAI), Tier-2 HPC (Isambard3) |
 | S Wales | 255 | |
 
-## Scope 3 emissions dominate
+### Scope 3 emissions dominate
 
 Your aim is to increase the amount of output you get from each resource unit (e.g. nodeh) used irrespective of energy use.
 
@@ -211,6 +211,6 @@ Your aim is to increase the amount of output you get from each resource unit (e.
 - Remove any power caps (or CPU/GPU frequency caps)
 - Move your calculations to an HPC facility that has a lower emissions rate per amount of output for your use case - *spatial shifting*
 
-## Scope 2 and scope 3 roughly equal
+### Scope 2 and scope 3 roughly equal
 
 In this case you can use any and all of the strategies described above to reduce your emissions footprint.
