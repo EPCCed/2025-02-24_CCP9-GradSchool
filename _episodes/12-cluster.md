@@ -31,7 +31,7 @@ Solution: parallel computing – divide up the work among numerous linked system
 
 ## What does an HPC system look like?
 
-{% include figure.html url="" max-width="40%"
+{% include figure.html url="" max-width="70%"
    file="/fig/archer2_architecture.png"
    alt="HPC system architecture" caption="" %}
 
