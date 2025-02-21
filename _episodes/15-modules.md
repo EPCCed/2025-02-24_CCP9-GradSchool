@@ -28,8 +28,7 @@ understand the reasoning behind this approach. The three biggest factors are:
 Software incompatibility is a major headache for programmers. Sometimes the
 presence (or absence) of a software package will break others that depend on
 it. Two well known examples are Python and C compiler versions.
-Python 3 famously provides a `python` command that conflicts with that provided
-by Python 2. Software compiled against a newer version of the C libraries and
+Software compiled against a newer version of the C libraries and
 then run on a machine that has older C libraries installed will result in a
 nasty `'GLIBCXX_3.4.20' not found` error.
 
@@ -102,6 +101,7 @@ it to tell us where a particular piece of software is stored.
 
 ```
 {{ site.remote.prompt }} which python3
+{{ site.remote.prompt }} python3 --version
 ```
 {: .language-bash}
 
@@ -178,38 +178,36 @@ Let's examine the output of `module avail` more closely.
 
 {% include {{ site.snippets }}/modules/wrong-gcc-version.snip %}
 
-> ## Using Software Modules in Scripts
->
-> Create a job that is able to run `python3 --version`. Remember, no software
-> is loaded by default! Running a job is just like logging on to the system
-> (you should not assume a module loaded on the login node is loaded on a
-> compute node).
->
-> > ## Solution
-> >
-> > ```
-> > {{ site.remote.prompt }} nano python-module.sh
-> > {{ site.remote.prompt }} cat python-module.sh
-> > ```
-> > {: .language-bash}
-> >
-> > ```
-> > {{ site.remote.bash_shebang }}
-> > {{ site.sched.comment }} {{ site.sched.flag.partition }}{% if site.sched.flag.qos %}
-> > {{ site.sched.comment }} {{ site.sched.flag.qos }}
-> > {% endif %}{{ site.sched.comment }} {{ site.sched.flag.time }} 00:00:30
-> > 
-> > module load {{ site.remote.module_python3 }}
-> >
-> > python3 --version
-> > ```
-> > {: .output}
-> >
-> > ```
-> > {{ site.remote.prompt }} {{ site.sched.submit.name }} {% if site.sched.submit.options != '' %}{{ site.sched.submit.options }} {% endif %}python-module.sh
-> > ```
-> > {: .language-bash}
-> {: .solution}
-{: .challenge}
+## Using Software Modules in Scripts
+
+What if we want a job that is able to run LAMMPS 29 Aug 2024. Remember, no software
+is loaded by default! Running a job is just like logging on to the system
+you should not assume a module loaded on the login node is loaded on a
+compute node.
+
+```
+auser@ln01:~> cat lammps-job.sh
+```
+{: .language-bash}
+```
+{{ site.remote.bash_shebang }}
+{{ site.sched.comment }} {{ site.sched.flag.partition }}
+{{ site.sched.comment }} {{ site.sched.flag.qos }}
+{{ site.sched.comment }} {{ site.sched.flag.time }}00:01:00
+{{ site.sched.comment }} {{ site.sched.flag.nodes }}2
+{{ site.sched.comment }} --tasks-per-node=128
+{{ site.sched.comment }} --cpus-per-task=1
+
+module load lammps/29Aug2024 
+
+srun --hint=nomultithread --distribution=block:block lmp ...LAMMPS options...
+```
+{: .output}
+
+
+```
+{{ site.remote.prompt }} {{ site.sched.submit.name }} lammps-job.sh
+```
+{: .language-bash}
 
 {% include links.md %}

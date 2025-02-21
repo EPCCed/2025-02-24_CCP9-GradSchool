@@ -1,34 +1,38 @@
-To demonstrate, let's load the `namd` module and then use the `module list`
+To demonstrate, let's load the `vasp` module and then use the `module list`
 command to show which modules we currently have loaded in our environment.
-([NAMD](https://www.ks.uiuc.edu/Research/namd/) is parallel molecular dynamics code
-designed for high-performance simulation of large biomolecular systems.)
+([VASP](https://www.vasp.at/) is parallel materials science code
+designed for high-performance simulation of electronic structure.)
 
 ```
-{{ site.remote.prompt }} module load namd
+{{ site.remote.prompt }} module load vasp
 {{ site.remote.prompt }} module list
 ```
 {: .language-bash}
 
 ```
-Currently Loaded Modulefiles:
- 1) git/2.21.0(default)     2) epcc/utils          3) /lustre/sw/modulefiles/epcc/setup-env
- 4) gcc/8.2.0               5) intel-license       6) intel-mpi-19/19.0.0.117
- 7) fftw/3.3.9-impi19-gcc8  8) namd/2.14(default) 
+Currently Loaded Modules:
+  1) craype-x86-rome                         6) bolt/0.8          11) cray-dsmml/0.2.2       16) cray-hdf5-parallel/1.12.2.1
+  2) libfabric/1.12.1.2.2.0.0                7) epcc-setup-env    12) cray-mpich/8.1.23      17) vasp/6/6.4.3
+  3) craype-network-ofi                      8) load-epcc-module  13) PrgEnv-gnu/8.3.3
+  4) perftools-base/22.12.0                  9) gcc/11.2.0        14) cray-libsci/22.12.1.1
+  5) xpmem/2.5.2-2.4_3.30__gd0f7936.shasta  10) craype/2.7.19     15) cray-fftw/3.3.10.3
 ```
 {: .output}
 
-So in this case, loading the `namd` module also loaded a variety of other
+So in this case, loading the `vasp` module also loaded a variety of other
 modules. Let's try unloading the `namd` package.
 
 ```
-{{ site.remote.prompt }} module unload namd
+{{ site.remote.prompt }} module unload vasp
 {{ site.remote.prompt }} module list
 ```
 {: .language-bash}
 
 ```
-Currently Loaded Modulefiles:
- 1) git/2.21.0(default)   2) epcc/utils   3) /lustre/sw/modulefiles/epcc/setup-env
+Currently Loaded Modules:
+  1) craype-x86-rome            4) perftools-base/22.12.0                  7) epcc-setup-env
+  2) libfabric/1.12.1.2.2.0.0   5) xpmem/2.5.2-2.4_3.30__gd0f7936.shasta   8) load-epcc-module
+  3) craype-network-ofi         6) bolt/0.8                                9) gcc/11.2.0
 ```
 {: .output}
 
