@@ -1,9 +1,9 @@
 ---
 title: "Scheduler Fundamentals"
-teaching: 45
-exercises: 30
+teaching: 20
+exercises: 0
 questions:
-- "What is a scheduler and why does a cluster need one?"
+- "What is a scheduler and why does an HPC system need one?"
 - "How do I launch a program to run on a compute node in the cluster?"
 - "How do I capture the output of a program that is run on a node in the
   cluster?"
@@ -35,7 +35,7 @@ why sometimes your job do not start instantly as in your laptop.
    file="/fig/restaurant_queue_manager.svg"
    alt="Compare a job scheduler to a waiter in a restaurant" %}
 
-The scheduler used in this lesson is {{ site.sched.name }}. Although
+The scheduler used in the examples here is {{ site.sched.name }}. Although
 {{ site.sched.name }} is not used everywhere, running jobs is quite similar
 regardless of what software is being used. The exact syntax might change, but
 the concepts remain the same.
@@ -54,8 +54,7 @@ manner. Our shell script will have three parts:
 * On the very first line, add `{{ site.remote.bash_shebang }}`. The `#!`
   (pronounced "hash-bang" or "shebang") tells the computer what program is
   meant to process the contents of this file. In this case, we are telling it
-  that the commands that follow are written for the command-line shell (what
-  we've been doing everything in so far).
+  that the commands that follow are written for the command-line bash shell.
 * Anywhere below the first line, we'll add an `echo` command with a friendly
   greeting. When run, the shell script will print whatever comes after `echo`
   in the terminal.
@@ -76,22 +75,16 @@ hostname
 ```
 {: .output}
 
-> ## Creating Our Test Job
->
-> Run the script. Does it execute on the cluster or just our login node?
->
-> > ## Solution
-> >
-> > ```
-> > {{ site.remote.prompt }} bash example-job.sh
-> > ```
-> > {: .language-bash}
-> > ```
-> > This script is running on {{ site.remote.host }}
-> > ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
+No we run the script. Does it execute on the compute nodes or just our login node?
+
+```
+{{ site.remote.prompt }} bash example-job.sh
+```
+{: .language-bash}
+```
+This script is running on {{ site.remote.host }}
+```
+{: .output}
 
 This script ran on the login node, but we want to take advantage of
 the compute nodes: we need the scheduler to queue up `example-job.sh`
@@ -200,40 +193,34 @@ only means that these are made available to you. Your job may end up using less
 memory, or less time, or fewer nodes than you have requested, and it will still
 run.
 
-It's best if your requests accurately reflect your job's requirements. We'll
-talk more about how to make sure that you're using resources effectively in a
-later episode of this lesson.
+It's best if your requests accurately reflect your job's requirements.
 
-> ## Submitting Resource Requests
->
-> Modify our `hostname` script so that it runs for a minute, then submit a job
-> for it on the cluster.
->
-> > ## Solution
-> >
-> > ```
-> > {{ site.remote.prompt }} cat example-job.sh
-> > ```
-> > {: .language-bash}
-> >
-> > ```
-> > {{ site.remote.bash_shebang }}
-> > {{ site.sched.comment }} {{ site.sched.flag.time }} 00:01 # timeout in HH:MM
-> >
-> > echo -n "This script is running on "
-> > sleep 20 # time in seconds
-> > hostname
-> > ```
-> > {: .output}
-> >
-> > ```
-> > {{ site.remote.prompt }} {{ site.sched.submit.name }} {% if site.sched.submit.options != '' %}{{ site.sched.submit.options }} {% endif %}example-job.sh
-> > ```
-> > {: .language-bash}
-> >
-> > Why are the {{ site.sched.name }} runtime and `sleep` time not identical?
-> {: .solution}
-{: .challenge}
+We will now modify our `hostname` script so that it runs for a minute, moves the
+options we have been using on the command line into the script and then submit a job
+for it on the HPC systems
+
+```
+{{ site.remote.prompt }} cat example-job.sh
+```
+{: .language-bash}
+
+```
+{{ site.remote.bash_shebang }}
+{{ site.sched.comment }} {{ site.sched.flag.time }}00:01 # timeout in HH:MM
+{{ site.sched.comment }} {{ site.sched.partition }} 
+{{ site.sched.comment }} {{ site.sched.qos }} 
+
+echo -n "This script is running on "
+sleep 20 # time in seconds
+hostname
+```
+{: .output}
+
+```
+{{ site.remote.prompt }} {{ site.sched.submit.name }} example-job.sh
+```
+{: .language-bash}
+
 
 Resource requests are typically binding. If you exceed them, your job will be
 killed. Let's use wall time as an example. We will request 1 minute of
@@ -246,8 +233,10 @@ wall time, and attempt to run a job for two minutes.
 
 ```
 {{ site.remote.bash_shebang }}
-{{ site.sched.comment }} {{ site.sched.flag.name }} long_job
-{{ site.sched.comment }} {{ site.sched.flag.time }} 00:01 # timeout in HH:MM
+{{ site.sched.comment }} {{ site.sched.flag.name }}long_job
+{{ site.sched.comment }} {{ site.sched.flag.time }}00:01 # timeout in HH:MM
+{{ site.sched.comment }} {{ site.sched.partition }} 
+{{ site.sched.comment }} {{ site.sched.qos }} 
 
 echo "This script is running on ... "
 sleep 240 # time in seconds
@@ -259,7 +248,7 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```
-{{ site.remote.prompt }} {{ site.sched.submit.name }} {% if site.sched.submit.options != '' %}{{ site.sched.submit.options }} {% endif %}example-job.sh
+{{ site.remote.prompt }} {{ site.sched.submit.name }} example-job.sh
 {{ site.remote.prompt }} {{ site.sched.status }} {{ site.sched.flag.user }}
 ```
 {: .language-bash}
@@ -287,7 +276,7 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```
-{{ site.remote.prompt }} {{ site.sched.submit.name }} {% if site.sched.submit.options != '' %}{{ site.sched.submit.options }} {% endif %}example-job.sh
+{{ site.remote.prompt }} {{ site.sched.submit.name }} example-job.sh
 {{ site.remote.prompt }} {{ site.sched.status }} {{ site.sched.flag.user }}
 ```
 {: .language-bash}
