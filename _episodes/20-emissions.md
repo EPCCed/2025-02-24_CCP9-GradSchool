@@ -217,7 +217,7 @@ In this case you can use any and all of the strategies described above to reduce
 
 ## ARCHER2 emissions compared to other sources
 
-ARCHER2 in S. Scotland:
+1 year, ARCHER2 in S. Scotland:
 
 |   | Emissions | Transatlantic flights | Person years of lab |
 |---|---:|----:|---:|
@@ -225,7 +225,7 @@ ARCHER2 in S. Scotland:
 | Heaviest user | 53,600 | 27 | 13 |
 | Average user | 1,800 | 0.9 | 0.5 |
 
-ARCHER2 in S.W. England:
+1 year, ARCHER2 in S.W. England:
 
 |   | Emissions | Transatlantic flights | Person years of lab |
 |---|---:|----:|---:|
