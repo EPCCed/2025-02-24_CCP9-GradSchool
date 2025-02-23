@@ -17,7 +17,7 @@ keypoints:
 - "It is important to understand the balance between scope 2 and scope 3 emissions before deciding on how to approach reducing your emissions."
 ---
 
-The first step in understanding how to reduce the emissions from your research or other work is quantifying the emissions from different sources so you can understand where action to reduce emissions can have the largest impact. Emissions from your use of HPC may be a large component and there has been a lot of work recently from the HPC community to enable users to estimate their emissions.
+The first step in understanding how to reduce the emissions from your research or other work is quantifying the emissions from different sources so you can understand where action to reduce emissions can have the largest impact. Emissions from your use of HPC may or may not be a large component and there has been a lot of work recently from the HPC community to enable users to estimate their emissions.
 
 So that we can compare emissions from HPC system use to other sources, we need to use a common, agreed framework to quantify emissions. The framework that is most widely used is the Greenhouse Gas (GHG) Protocol.
 
@@ -214,3 +214,21 @@ Your aim is to increase the amount of output you get from each resource unit (e.
 ### Scope 2 and scope 3 roughly equal
 
 In this case you can use any and all of the strategies described above to reduce your emissions footprint.
+
+## ARCHER2 emissions compared to other sources
+
+ARCHER2 in S. Scotland:
+
+|   | Emissions | Transatlantic flights | Person years of lab |
+|---|---:|----:|---:|
+| ARCHER2 total | 1,728,000 | 864 | 432 |
+| Heaviest user | 53,600 | 27 | 13 |
+| Average user | 1,800 | 0.9 | 0.5 |
+
+ARCHER2 in S.W. England:
+
+|   | Emissions | Transatlantic flights | Person years of lab |
+|---|---:|----:|---:|
+| ARCHER2 total | 6,274,000 | 3,140 | 1,570 |
+| Heaviest user | 212,900 | 106 | 53 |
+| Average user | 6,700 | 3.4 | 1.7 |
