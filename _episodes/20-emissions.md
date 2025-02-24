@@ -235,7 +235,7 @@ Comparisons to other work activities: travel to conferences in USA and lab work.
 | Heaviest user | 212,900 kgCO2e | 106 | 53 |
 | Average user | 6,700 kgCO2e | 3.4 | 1.7 |
 
-- Lab values include purchases, heating and electricity; 4,000 kgCO2e/person-year From: [https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e]
+- Lab values include purchases, heating and electricity; 4,000 kgCO2e/person-year From: (https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e)
 - Flights values 2,000 kgCO2e per return flight from London to New York. From: [https://www.clevel.co.uk/flight-carbon-calculator/] and [https://howbadarebananas.com/] 
 
 ### Other comparisons
