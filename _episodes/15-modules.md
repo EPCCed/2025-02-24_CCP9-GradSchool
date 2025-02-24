@@ -95,7 +95,7 @@ message telling you so
 To load a software module, use `module load`. In this example we will use
 Python 3.
 
-Initially, Python 3 is not loaded. We can test this by using the `which`
+Initially, Python 3 is quite an old verion. We can test this by using the `which`
 command. `which` looks for programs the same way that Bash does, so we can use
 it to tell us where a particular piece of software is stored.
 
