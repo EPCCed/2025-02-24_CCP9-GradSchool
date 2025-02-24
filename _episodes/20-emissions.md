@@ -203,7 +203,7 @@ There are a number of different strategies to reduce your emissions in this case
 | SW England | 242 | AIRR (IsambardAI), Tier-2 HPC (Isambard3) |
 | S Wales | 255 | |
 
-### Scope 3 emissions dominate
+### Scope 3 emissions dominate
 
 Your aim is to increase the amount of output you get from each resource unit (e.g. nodeh) used irrespective of energy use.
 
@@ -217,21 +217,39 @@ In this case you can use any and all of the strategies described above to reduce
 
 ## ARCHER2 emissions compared to other sources
 
+Comparisons to other work activities: travel to conferences in USA and lab work.
+
 1 year, ARCHER2 in S. Scotland:
 
 |   | Emissions | Transatlantic flights | Person years of lab |
 |---|---:|----:|---:|
-| ARCHER2 total | 1,728,000 | 864 | 432 |
-| Heaviest user | 53,600 | 27 | 13 |
-| Average user | 1,800 | 0.9 | 0.5 |
+| ARCHER2 total | 1,728,000 kgCO2e | 864 | 432 |
+| Heaviest user | 53,600 kgCO2e | 27 | 13 |
+| Average user | 1,800 kgCO2e | 0.9 | 0.5 |
 
 1 year, ARCHER2 in S.W. England:
 
 |   | Emissions | Transatlantic flights | Person years of lab |
 |---|---:|----:|---:|
-| ARCHER2 total | 6,274,000 | 3,140 | 1,570 |
-| Heaviest user | 212,900 | 106 | 53 |
-| Average user | 6,700 | 3.4 | 1.7 |
+| ARCHER2 total | 6,274,000 kgCO2e | 3,140 | 1,570 |
+| Heaviest user | 212,900 kgCO2e | 106 | 53 |
+| Average user | 6,700 kgCO2e | 3.4 | 1.7 |
 
-- Lab values include purchases, heating and electricity. From: https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e
-- Flights values from: https://www.clevel.co.uk/flight-carbon-calculator/ and https://howbadarebananas.com/ 
+- Lab values include purchases, heating and electricity; 4,000 kgCO2e/person-year From: [https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e]
+- Flights values 2,000 kgCO2e per return flight from London to New York. From: [https://www.clevel.co.uk/flight-carbon-calculator/] and [https://howbadarebananas.com/] 
+
+### Other comparisons
+
+Comparisons to other day-to-day activities.
+
+1 year, ARCHER2 in S. Scotland:
+
+|   | Emissions | Miles driven | 8 oz (225 g) steaks | 225 g portions of carrots |
+|---|---:|----:|---:|---:|
+| ARCHER2 total | 1,728,000 kgCO2e | 3,260,000 | 300,000 | 27,500,000 | 
+| Heaviest user | 53,600 kgCO2e | 101,000 | 9,200 | 851,000 |
+| Average user | 1,800 kgCO2e | 3,400 | 310 | 29,000 |
+
+- 1 mile of average UK car = 0.530 kgCO2e.  From: [https://howbadarebananas.com/] 
+- 8 oz (225 g) raw steak from UK beef herd = 5.8 kgCO2e. From: [https://howbadarebananas.com/] 
+- 225 g portion of UK carrots = 0.063 kgCO2e. From: [https://howbadarebananas.com/] 
