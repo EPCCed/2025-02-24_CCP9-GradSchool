@@ -232,3 +232,6 @@ In this case you can use any and all of the strategies described above to reduce
 | ARCHER2 total | 6,274,000 | 3,140 | 1,570 |
 | Heaviest user | 212,900 | 106 | 53 |
 | Average user | 6,700 | 3.4 | 1.7 |
+
+- Lab values include purchases, heating and electricity. From: https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e
+- Flights values from: https://www.clevel.co.uk/flight-carbon-calculator/ and https://howbadarebananas.com/ 
