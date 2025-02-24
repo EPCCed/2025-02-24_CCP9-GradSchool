@@ -20,7 +20,7 @@ keypoints:
 - "The login node is a shared machine: be considerate of other users."
 ---
 
-## Drivers for HPC
+## Drivers for HPC
 
 - Scientific simulation and modelling drive the need for greater computing power
 - Single-core processors can not be made that have enough resource for the simulations needed
@@ -70,19 +70,18 @@ are backed up.
 
 ## Nodes
 
-Individual computers that compose a cluster are typically called _nodes_
+Individual computers that compose an HPC system are typically called _nodes_
 (although you will also hear people call them _servers_, _computers_ and
-_machines_). On a cluster, there are different types of nodes for different
+_machines_). On an HPC system, there are different types of nodes for different
 types of tasks. The node where you are right now is called the _login node_,
 _head node_, _landing pad_, or _submit node_. A login node serves as an access
-point to the cluster.
+point to the HPC system.
 
 As a gateway, the login node should not be used for time-consuming or
 resource-intensive tasks. You should be alert to this, and check with your
 site's operators or documentation for details of what is and isn't allowed. It
 is well suited for uploading and downloading files, setting up software, and
-running tests. Generally speaking, in these lessons, we will avoid running jobs
-on the login node.
+running tests.
 
 Who else is logged in to the login node?
 
@@ -93,22 +92,22 @@ Who else is logged in to the login node?
 
 > ## Dedicated Transfer Nodes
 >
-> If you want to transfer larger amounts of data to or from the cluster, some
+> If you want to transfer larger amounts of data to or from the HPC system, some
 > systems offer dedicated nodes for data transfers only. The motivation for
 > this lies in the fact that larger data transfers should not obstruct
-> operation of the login node for anybody else. Check with your cluster's
+> operation of the login node for anybody else. Check with your HPC system
 > documentation or its support team if such a transfer node is available. As a
 > rule of thumb, consider all transfers of a volume larger than 500 MB to 1 GB
 > as large. But these numbers change, e.g., depending on the network connection
-> of yourself and of your cluster or other factors.
+> of yourself and of your HPC system or other factors.
 {: .callout}
 
-The real work on a cluster gets done by the _compute_ (or _worker_) _nodes_.
+The real work on an HPC system gets done by the _compute_ (or _worker_) _nodes_.
 compute nodes come in many shapes and sizes, but generally are dedicated to long
 or hard tasks that require a lot of computational resources.
 
 All interaction with the compute nodes is handled by a specialized piece of
-software called a scheduler (the scheduler used in this lesson is called
+software called a scheduler (the scheduler we will use as an example is called
 {{ site.sched.name }}). We will discuss the scheduler and how it works in the 
 next section.
 
@@ -164,7 +163,7 @@ connect to a shared, remote fileserver or cluster of servers.
 
 > ## Differences Between Nodes
 >
-> Many HPC clusters have a variety of nodes optimized for particular workloads.
+> Many HPC systems have a variety of nodes optimised for particular workloads.
 > Some nodes may have larger amount of memory, or specialised resources such as
 > GPUs.
 {: .callout}
