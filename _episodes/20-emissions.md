@@ -235,8 +235,8 @@ Comparisons to other work activities: travel to conferences in USA and lab work.
 | Heaviest user | 212,900 kgCO2e | 106 | 53 |
 | Average user | 6,700 kgCO2e | 3.4 | 1.7 |
 
-- Lab values include purchases, heating and electricity; 4,000 kgCO2e/person-year From: (https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e)
-- Flights values 2,000 kgCO2e per return flight from London to New York. From: [https://www.clevel.co.uk/flight-carbon-calculator/] and [https://howbadarebananas.com/] 
+- Lab values include purchases, heating and electricity; 4,000 kgCO2e/person-year From: [Carbon footprint and mitigation strategies of three chemistry laboratories](https://pubs.rsc.org/en/content/articlehtml/2024/gc/d3gc03668e)
+- Flights values 2,000 kgCO2e per return flight from London to New York. From: [Flight Carbon Calculator](https://www.clevel.co.uk/flight-carbon-calculator/) and [How bad are bananas?](https://howbadarebananas.com/)
 
 ### Other comparisons
 
@@ -250,6 +250,6 @@ Comparisons to other day-to-day activities.
 | Heaviest user | 53,600 kgCO2e | 101,000 | 9,200 | 851,000 |
 | Average user | 1,800 kgCO2e | 3,400 | 310 | 29,000 |
 
-- 1 mile of average UK car = 0.530 kgCO2e.  From: [https://howbadarebananas.com/] 
-- 8 oz (225 g) raw steak from UK beef herd = 5.8 kgCO2e. From: [https://howbadarebananas.com/] 
-- 225 g portion of UK carrots = 0.063 kgCO2e. From: [https://howbadarebananas.com/] 
+- 1 mile of average UK car = 0.530 kgCO2e.  From: [How bad are bananas?](https://howbadarebananas.com/)
+- 8 oz (225 g) raw steak from UK beef herd = 5.8 kgCO2e. From: [How bad are bananas?](https://howbadarebananas.com/)
+- 225 g portion of UK carrots = 0.063 kgCO2e. From: [How bad are bananas?](https://howbadarebananas.com/)
