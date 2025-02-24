@@ -61,7 +61,7 @@ sched:
     testing: "testing"
   status: "squeue"
   flag:
-    user: "-user=auser"
+    user: "--user=auser"
     interactive: "--time=00:20:00 --partition=standard --qos=standard --pty /usr/bin/bash --login"
     histdetail: "-l -j"
     name: "--job-name="

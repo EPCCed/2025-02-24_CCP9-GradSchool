@@ -207,8 +207,8 @@ for it on the HPC systems
 ```
 {{ site.remote.bash_shebang }}
 {{ site.sched.comment }} {{ site.sched.flag.time }}00:01 # timeout in HH:MM
-{{ site.sched.comment }} {{ site.sched.partition }} 
-{{ site.sched.comment }} {{ site.sched.qos }} 
+{{ site.sched.comment }} {{ site.sched.flag.partition }} 
+{{ site.sched.comment }} {{ site.sched.flag.qos }} 
 
 echo -n "This script is running on "
 sleep 20 # time in seconds
