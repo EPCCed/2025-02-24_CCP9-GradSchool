@@ -22,6 +22,12 @@ Further training:
 Access to resources:
 
 - [ARCHER2 Driving Test](https://www.archer2.ac.uk/training/driving-test.html): complete short multiple choice test on using HPC and get free resources on ARCHER2 for 6 months to test for your work.
-- [ARCHER2 access routes](https://www.archer2.ac.uk/support-access/access.html): for move substantial amounts of resource.
+- [ARCHER2 access routes](https://www.archer2.ac.uk/support-access/access.html): for move substantial amounts of resource (EPSRC or NERC remit research).
+- [EuroHPC](https://eurohpc-ju.europa.eu/access-our-supercomputers_en): access to HPC facilities across Europe.
+- [DiRAC](https://dirac.ac.uk/): access to HPC facilities for STFC remit research.
+
+Emissions:
+
+- [Personal Carbon Footprint Calculator (WWF)](https://footprint.wwf.org.uk/)
 
 {% include links.md %}
